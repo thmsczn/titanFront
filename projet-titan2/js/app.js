@@ -1,5 +1,5 @@
 var userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
-var apiClient = apigClientFactory.newClient();
+//var apiClient = apigClientFactory.newClient();
 var token = null;
 
 function signUp() {
@@ -26,10 +26,12 @@ function signUp() {
 function signIn() {
   event.preventDefault();
   const username = document.querySelector("#username").value;
+  const email = document.querySelector("#email").value;
   const password = document.querySelector("#password").value;
 
   let authenticationData = {
     Username: username,
+    Email: email,
     Password: password,
   };
 
@@ -45,7 +47,7 @@ function signIn() {
   cognitoUser.authenticateUser(authenticationDetails, {
     onSuccess: function () {
       console.log("login success");
-      location.href = "index.html";
+      location.href = "home.html";
     },
     onFailure: function (err) {
       alert(JSON.stringify(err));
@@ -86,15 +88,5 @@ function navTosignIn() {
   location.href = "signin.html";
 };
 
-function loadUsers() {
-  getJWTToken(function (token) {
-    apiClient
-      .usersGet({}, null, { headers: { Authorization: token } })
-      .then(function (result) {
-        console.log(result);
-        displayUsers(result.data);
-      })
-      .catch((err) => console.log(err));
-  });
-};
+
 
