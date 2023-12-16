@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -7,39 +9,37 @@
         integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
         crossorigin="anonymous" />
     <link rel="stylesheet" href="style.css">
-    <title>Dynamo-Chat</title>
+    <title>Titan</title>
 </head>
 
 <body>
-    <nav>
-        <div class="logo">
-            <h4>Confirm</h4>
-        </div>
-        <ul class="nav-links">
-            <li><a href="/index.html"><i class="fas fa-home">Home</i></a></li> 
-            <li><a onclick="signOut()" href="#" class="user"><i class="fa fa-user" aria-hidden="true"></i></i></a></li>
-        </ul>
-        <div class="burger">
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
-    </nav>
-    <div class="container">
-        <div class="center">
-            <h2>Enter your confirm code</h2>
-            <form class="signup-container">
-                <div class="signup-item">
-                    <label class="sign-lbl" for="code">Code:</label>
-                    <input class="sign-inp" id="confirm" type="text" />
-                </div>
-                <div class="login-btns">
-                    <button class="btn" onclick="confirmCode()">Confirm</button>
-                    <button class="btn" onclick="resendCode()">Resend</button>
-                </div>
-            </form>
-        </div>
-    </div>
+    <header class="header">
+        <nav class="navbar">
+            <a href="">Profil</a>
+            <a href="">Déconnexion</a>
+        </nav>
+    </header>
+        <h1>Titan- Poster des messages</h1>
+        <form>
+          <label for="message">Message:</label>
+          <input type="text" id="message" name="message"><br><br>
+          <input type="submit" value="Poster">
+        </form>
+        <div id="messages"></div>
+        <script>
+          const form = document.querySelector('form');
+          const messageInput = document.querySelector('#message');
+          const messagesDiv = document.querySelector('#messages');
+          form.addEventListener('submit', (event) => {
+            event.preventDefault();
+            const message = messageInput.value;
+            const messageElement = document.createElement('p');
+            messageElement.textContent = message;
+            messagesDiv.insertBefore(messageElement, messagesDiv.firstChild);
+            messageInput.value = '';
+          });
+        </script>
+
     <script src="./js/config.js"></script>
     <script src="./js/amazon-cognito-identity.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
@@ -54,6 +54,8 @@
     <script type="text/javascript" src="./js/amazon-cognito-identity-js/lib/apiGatewayCore/simpleHttpClient.js"></script>
     <script type="text/javascript" src="./js/amazon-cognito-identity-js/lib/apiGatewayCore/utils.js"></script>
     <script type="text/javascript" src="./js/amazon-cognito-identity-js/apigClient.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script src="./js/app.js"></script>
-</body>
-</html>
+
+</body></html>

@@ -12,33 +12,31 @@
     <title>Titan</title>
 </head>
 
-<body>
-    <header class="header">
-        <nav class="navbar">
-            <a href="">Profil</a>
-            <a href="">Déconnexion</a>
-        </nav>
-    </header>
-        <h1>Titan- Poster des messages</h1>
-        <form>
-          <label for="message">Message:</label>
-          <input type="text" id="message" name="message"><br><br>
-          <input type="submit" value="Poster">
-        </form>
-        <div id="messages"></div>
-        <script>
-          const form = document.querySelector('form');
-          const messageInput = document.querySelector('#message');
-          const messagesDiv = document.querySelector('#messages');
-          form.addEventListener('submit', (event) => {
-            event.preventDefault();
-            const message = messageInput.value;
-            const messageElement = document.createElement('p');
-            messageElement.textContent = message;
-            messagesDiv.insertBefore(messageElement, messagesDiv.firstChild);
-            messageInput.value = '';
-          });
-        </script>
+<body >
+    <div class="background"></div>
+
+<div class="container">
+    <div class="content">
+        <div class="text-sci">
+            <h2 class="logo">Bienvenue sur Titan !<br>
+               <p>Ajoutez-nous sur nos réseaux sociaux</p>
+        
+                <div class="social-icons">
+                    <a href=""><ion-icon name="logo-facebook"></ion-icon></a>
+                    <a href=""><ion-icon name="logo-instagram"></ion-icon></a>
+                </div>
+                </div>
+    </div>
+
+    <div class="logreg-box">
+        <div class="form-box login">
+                <div class="login-btns">
+                <button onclick="navTosignIn()">Connexion</button>
+                <button onclick="navTosignUp()">Inscription</button>
+              </div>
+        </div>
+    </div>
+</div>
 
     <script src="./js/config.js"></script>
     <script src="./js/amazon-cognito-identity.min.js"></script>
@@ -57,5 +55,23 @@
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script src="./js/app.js"></script>
+    <script type="text/javascript">
+        checkLogin();
+        console.log(getUniqueName('jithesh','malini'));
+        console.log(getUniqueName('malini','jithesh'));
+        console.log(getUniqueName('ram','jithesh'));
+        console.log(getUniqueName('jithesh','ram'));
+        console.log(getUniqueName('Ganga','JithESH'));
+        console.log(getUniqueName('JIThesh','GANGA'));
+        const now = new Date()  
+        const secondsSinceEpoch = Math.round(now.getTime() / 1000)  
+        console.log(secondsSinceEpoch);
+
+        //postChats();
+        //getChats();
+        //console.log(hashString('jithesh'));
+        //console.log(hashString('malini'));
+        //console.log(hashString('ram'));
+    </script>
 
 </body></html>

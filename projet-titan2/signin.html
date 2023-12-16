@@ -35,23 +35,23 @@
 
     <div class="logreg-box">
         <div class="form-box login">
-            <form action="" method="post" name="login">
                 <h2>Connexion</h2>
+                <form class="signup-container">
                 <div class="input-box">
                     <span class="icon">
                         <ion-icon name="person"></ion-icon>
                     </span>
-                    <input type="txt" name="nom" required>
+                    <input type="txt" id="username" name="username" required>
                     <label>@nom d'utilisateur</label>
                 </div>
                 <div class="input-box">
                     <span class="icon">
                         <ion-icon name="lock-closed"></ion-icon>
                     </span>
-                    <input type="password" name="password" required>
+                    <input type="password" id="password" name="password" required>
                     <label>mot de passe</label>
                 </div>
-                <button type="submit" name="submit-login" class="btn">Se connecter</button>
+                <button name="submit-login" class="btn" onclick="signIn()">Se connecter</button>
             </form>
         </div>
     </div>
