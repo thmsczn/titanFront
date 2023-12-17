@@ -255,6 +255,10 @@
       font-weight: 500;
   }
 
+.afficherMessage {
+    color:#fff;
+}
+
   form {
     display: flex;
     flex-direction: column;

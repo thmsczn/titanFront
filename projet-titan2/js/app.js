@@ -47,7 +47,7 @@ function signIn() {
   cognitoUser.authenticateUser(authenticationDetails, {
     onSuccess: function () {
       console.log("login success");
-      location.href = "home.html";
+      location.href = "home.html?username=" + username;
     },
     onFailure: function (err) {
       alert(JSON.stringify(err));
@@ -89,7 +89,8 @@ function navTosignIn() {
 };
 
 function postMessage() {
-  const username = document.querySelector("#username").value; // Replace with actual user input
+  const urlParams = new URLSearchParams(window.location.search);
+  const username = urlParams.get('username');
   const message = document.querySelector("#message").value;
 
   fetch('https://shfhlrexqi.execute-api.eu-west-1.amazonaws.com/default/lambda-titan-tweet', {
