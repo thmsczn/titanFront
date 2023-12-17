@@ -88,5 +88,47 @@ function navTosignIn() {
   location.href = "signin.html";
 };
 
+function postMessage() {
+  const username = document.querySelector("#username").value; // Replace with actual user input
+  const message = document.querySelector("#message").value;
+
+  fetch('https://shfhlrexqi.execute-api.eu-west-1.amazonaws.com/default/lambda-titan-tweet', {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ user: username, message: message })
+  })
+  .then(response => response.json())
+  .then(data => {
+      console.log('Success:', data);
+  })
+  .catch((error) => {
+      console.error('Error:', error);
+  });
+}
+
+function getMessages() {
+  fetch('https://shfhlrexqi.execute-api.eu-west-1.amazonaws.com/default/lambda-titan-tweet', {
+      method: 'GET'
+  })
+  .then(response => response.json())
+  .then(data => {
+      console.log('Success:', data);
+      const messagesContainer = document.getElementById('messages'); // Make sure you have a div with id="messages" in your HTML
+      messagesContainer.innerHTML = ''; // Clear previous messages
+      data.forEach(msg => {
+          const messageElement = document.createElement('div');
+          messageElement.innerHTML = `<strong>${msg.user}</strong>: ${msg.message}`;
+          messagesContainer.appendChild(messageElement);
+      });
+  })
+  .catch((error) => {
+      console.error('Error:', error);
+  });
+}
+
+
+
 
 
