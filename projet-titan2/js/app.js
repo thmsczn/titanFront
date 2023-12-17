@@ -93,7 +93,7 @@ function postMessage() {
   const username = urlParams.get('username');
   const message = document.querySelector("#message").value;
 
-  fetch('https://shfhlrexqi.execute-api.eu-west-1.amazonaws.com/default/lambda-titan-tweet', {
+  fetch('https://1rm10l7kai.execute-api.eu-west-1.amazonaws.com/stage-deployment/lambda-titan-tweet', {
       method: 'POST',
       headers: {
           'Content-Type': 'application/json',
@@ -110,14 +110,14 @@ function postMessage() {
 }
 
 function getMessages() {
-  fetch('https://shfhlrexqi.execute-api.eu-west-1.amazonaws.com/default/lambda-titan-tweet', {
+  fetch('https://1rm10l7kai.execute-api.eu-west-1.amazonaws.com/stage-deployment/lambda-titan-tweet', {
       method: 'GET'
   })
   .then(response => response.json())
   .then(data => {
       console.log('Success:', data);
-      const messagesContainer = document.getElementById('messages'); // Make sure you have a div with id="messages" in your HTML
-      messagesContainer.innerHTML = ''; // Clear previous messages
+      const messagesContainer = document.getElementById('messages');
+      messagesContainer.innerHTML = '';
       data.forEach(msg => {
           const messageElement = document.createElement('div');
           messageElement.innerHTML = `<strong>${msg.user}</strong>: ${msg.message}`;
